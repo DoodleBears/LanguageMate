@@ -1,0 +1,14 @@
+version: "3"
+services:
+  nginx:
+    image: nginx:latest
+    depends_on: 
+      - web
+    volumes:
+      - ./manifest/deploy/nginx/docker-site.conf:/etc/nginx/sites-enabled/cssgen
+      - ./manifest/deploy/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./manifest/deploy/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./storage:/var/www/storage
+      - ./public:/var/www/public
+    ports:
+      - "80:80"
