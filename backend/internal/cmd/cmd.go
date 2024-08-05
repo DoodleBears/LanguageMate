@@ -7,6 +7,7 @@ import (
 	"github.com/gogf/gf/v2/net/ghttp"
 	"github.com/gogf/gf/v2/os/gcmd"
 
+	"backend/internal/controller/auth"
 	"backend/internal/controller/hello"
 )
 
@@ -21,6 +22,12 @@ var (
 				group.Middleware(ghttp.MiddlewareHandlerResponse)
 				group.Bind(
 					hello.NewV1(),
+				)
+			})
+			s.Group("/api/v1", func(group *ghttp.RouterGroup) {
+				group.Middleware(ghttp.MiddlewareHandlerResponse)
+				group.Bind(
+					auth.NewV1(),
 				)
 			})
 			s.Run()
