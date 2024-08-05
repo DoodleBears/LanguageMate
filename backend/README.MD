@@ -17,17 +17,27 @@ _You could run the project with docker-compose without setting optional environm
 
 ## Development flows
 ### Start Up
+
+### Setup environment and config
 Copy and rename `manifest\config\config.example` to `manifest\config\config.yaml`.
 
 Copy and rename `.env.example` to `.env`, this file is used to set some environment variables for your local development in docker.
 
 The `nginx` docker compose file is used for prod related development, remove it if you don't need.
 
-Then use `docker compose up -d --build` to build and run the project.
+### Run project
+#### Simple
+use command below to build and run the project.
+```
+docker compose -f docker-compose.yaml -f docker-compose.nginx.yaml up -d --build
+```
+#### Advanced
+1. Revise `.env` file `COMPOSE_FILE` variable for your OS
+2. Use `docker compose up -d --build` to build and run the project.
 
 The default exposed ports for different containers are as follows:
 - web:8000
-- neginx:80
+- nginx:80
 - mariadb:3306
 
 ___It is recommended to use WSL2 to run this project on Windows. Or you will need to change some settings.____
