@@ -1,0 +1,62 @@
+server:
+  address:              ":8000"
+  httpsAddress:         ":443"
+  httpsCertPath:        ""
+  httpsKeyPath:         ""
+  serverAgent:          "LanguageMate API Server"
+  openapiPath:          "/api.json"
+  swaggerPath:          "/swagger"
+  serverRoot:           "/var/www/"
+  indexFolder:          true
+  fileServerEnabled:    true
+  maxHeaderBytes:       10240
+  clientMaxBodySize:    12582912
+  graceful:             true
+  gracefulTimeout:      10
+  logStdout:            false
+  errorLogEnabled:      true
+  errorLogPattern:      "error-{Y-m-d}.log"
+  accessLogEnabled:     true
+  accessLogPattern:     "http-{Y-m-d}.log"
+  DumpRouterMap:        false
+  logger:
+    path:               "/var/log/ServerLog"
+    file:               "server-{Y-m-d}.log"
+    level :             "all"
+    stdout:             false
+
+database:
+  default:
+    host:               "database"
+    port:               "3306"
+    user:               "languagemate"
+    pass:               "Passw0rd"
+    name:               "languagemate"
+    type:               "mariadb"
+    timezone:           "Asia/Shanghai"
+    extra:              "parseTime=true"
+    role:               "master"
+    debug:              "true"
+    dryrun:             0
+    charset:            "utf8"
+    maxLifetime:        "30s"
+  logger:
+    path:               "/var/log/ServerLog"
+    file:               "database-{Y-m-d}.log"
+    level :             "all"
+    stdout:             false
+
+logger:
+  path:                 "/var/log/ServerLog"
+  level :               "all"
+  stdout:               false
+  rotateSize:           "1M"
+  rotateExpire:         0
+  rotateBackupLimit:    30
+  rotateBackupExpire:   "30d"
+  rotateBackupCompress: 9
+  rotateCheckInterval:  "24h"
+  scheduler:
+    file:               "scheduler-{Y-m-d}.log"
+    level :             "all"
+    stdout:             false
