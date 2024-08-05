@@ -1,4 +1,3 @@
-# GoFrame Template For SingleRepo
+# Language Mate backend
 
-Quick Start: 
-- https://goframe.org/pages/viewpage.action?pageId=1114399
+_Build with GoFrame_
