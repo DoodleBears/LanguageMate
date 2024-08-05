@@ -5,6 +5,7 @@ services:
     depends_on: 
       - web
     volumes:
+    # would have error on windows when mounting files, use WSL to up the container
       - ./manifest/deploy/nginx/docker-site.conf:/etc/nginx/sites-enabled/cssgen
       - ./manifest/deploy/nginx/default.conf:/etc/nginx/conf.d/default.conf
       - ./manifest/deploy/nginx/nginx.conf:/etc/nginx/nginx.conf
