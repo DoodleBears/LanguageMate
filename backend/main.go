@@ -13,5 +13,8 @@ import (
 )
 
 func main() {
-	cmd.Main.Run(gctx.GetInitCtx())
+	ctx := gctx.GetInitCtx()
+	cmd.Router.Run(ctx)
+	cmd.Openapi.Run(ctx)
+	cmd.Main.Run(ctx)
 }
