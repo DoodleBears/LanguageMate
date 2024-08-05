@@ -11,7 +11,7 @@ gfcli:
     # In docker container, we should use
     # database rather than localhost
     - link: "mariadb:languagemate:Passw0rd@tcp(database:3306)/languagemate"
-      # tablesEx: "casbin_rule"
+      tablesEx: "atlas_schema_revisions"
   run:
     path:  "bin"
     args:  ""
