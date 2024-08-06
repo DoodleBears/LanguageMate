@@ -28,6 +28,7 @@ var (
 					)
 				})
 				group.Group("/users", func(group *ghttp.RouterGroup) {
+					group.Middleware(service.Middleware().Auth)
 					group.Bind(
 						user.NewV1(),
 					)

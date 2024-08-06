@@ -8,6 +8,7 @@ import (
 	"github.com/gogf/gf/v2/container/gvar"
 	"github.com/gogf/gf/v2/errors/gcode"
 	"github.com/gogf/gf/v2/errors/gerror"
+	"github.com/gogf/gf/v2/frame/g"
 	"github.com/gogf/gf/v2/i18n/gi18n"
 	"github.com/gogf/gf/v2/net/ghttp"
 	"github.com/gogf/gf/v2/os/genv"
@@ -25,7 +26,16 @@ func New() service.IMiddleware {
 
 // Auth validates the request to allow only signed-in users visit.
 func (s *sMiddleware) Auth(r *ghttp.Request) {
-	r.Middleware.Next()
+	ok, _ := r.Session.Contains("uid")
+	if ok {
+		r.Middleware.Next()
+	} else {
+		r.Response.WriteJson(g.Map{
+			"code":    403,
+			"message": "Login timeout",
+			"data":    nil,
+		})
+	}
 }
 
 // CORS allows Cross-origin resource sharing.
