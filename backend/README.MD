@@ -40,7 +40,7 @@ The default exposed ports for different containers are as follows:
 - nginx:80
 - mariadb:3306
 
-___It is recommended to use WSL2 to run this project on Windows. Or you will need to change some settings.____
+___It is recommended to use WSL2 to run this project on Windows or hot reload is not available. There are some [existing problems](https://github.com/microsoft/WSL/issues/4739) when using WSL.____
 
 ### Initialize Database
 _We are using [Atlas](https://atlasgo.io/) as our database schema manager._
