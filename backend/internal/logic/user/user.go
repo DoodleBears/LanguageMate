@@ -7,6 +7,7 @@ import (
 	"backend/internal/model/entity"
 	"backend/internal/service"
 	"context"
+	"encoding/hex"
 
 	"github.com/gogf/gf/v2/crypto/gaes"
 	"github.com/gogf/gf/v2/database/gdb"
@@ -50,8 +51,11 @@ func (s *sUser) CreateUser(ctx context.Context, data *auth.SignupReq) (user *ent
 	}
 	uid := s.GenerateUid(ctx)
 	user.Uid = uid
-	encrypted, _ := gaes.Encrypt([]byte(data.Password), []byte(consts.AESKey))
-	user.Password = gconv.String(encrypted)
+	encrypted, err := gaes.Encrypt([]byte(data.Password), []byte(consts.AESKey))
+	if err != nil {
+		return nil, err
+	}
+	user.Password = hex.EncodeToString(encrypted)
 	user.Nickname = user.Username
 	user.AvatarUrl = "uri"
 	tx, err := g.DB().Begin(ctx)
