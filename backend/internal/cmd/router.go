@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"backend/internal/controller/auth"
+	"backend/internal/controller/user"
 	"backend/internal/service"
 	"context"
 
@@ -24,6 +25,11 @@ var (
 					group.Middleware(service.Middleware().NeverDoneCtx)
 					group.Bind(
 						auth.NewV1(),
+					)
+				})
+				group.Group("/users", func(group *ghttp.RouterGroup) {
+					group.Bind(
+						user.NewV1(),
 					)
 				})
 			})

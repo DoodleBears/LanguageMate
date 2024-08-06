@@ -72,9 +72,12 @@ func (c *ControllerV1) Login(ctx context.Context, req *v1.LoginReq) (res *v1.Log
 			dao.Users.Columns().LoginAttempts: 0,
 		}).Update()
 
+		// Force start a new session when login
 		SessionId := service.Session().GenerateSessionId(r)
-		r.Session.Set("uid", uid)
 		r.Cookie.SetSessionId(SessionId)
+		r.Session.SetId(SessionId)
+		r.Session.Set("uid", uid)
+		r.Response.Write(r.Session.Data())
 		return
 	}
 }
