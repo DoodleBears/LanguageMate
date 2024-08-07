@@ -77,7 +77,6 @@ func (c *ControllerV1) Login(ctx context.Context, req *v1.LoginReq) (res *v1.Log
 		r.Cookie.SetSessionId(SessionId)
 		r.Session.SetId(SessionId)
 		r.Session.Set("uid", uid)
-		r.Response.Write(r.Session.Data())
 		return
 	}
 }
