@@ -6,7 +6,7 @@ import (
 
 type WordsList []*Word
 type IndexWordReq struct {
-	g.Meta  `path:"/" tags:"Word" method:"get" sum:"Get a word"`
+	g.Meta  `path:"/" tags:"Word" method:"get" sum:"Get words"`
 	Page    int `json:"page" des:"Page" in:"query"`
 	PerPage int `json:"per_page" des:"Page limit" in:"query"`
 }
