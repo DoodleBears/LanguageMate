@@ -3,6 +3,7 @@ package cmd
 import (
 	"backend/internal/controller/auth"
 	"backend/internal/controller/user"
+	"backend/internal/controller/word"
 	"backend/internal/service"
 	"context"
 
@@ -31,6 +32,12 @@ var (
 					group.Middleware(service.Middleware().Auth)
 					group.Bind(
 						user.NewV1(),
+					)
+				})
+				group.Group("/words", func(group *ghttp.RouterGroup) {
+					group.Middleware(service.Middleware().Auth)
+					group.Bind(
+						word.NewV1(),
 					)
 				})
 			})
