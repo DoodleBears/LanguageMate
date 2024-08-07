@@ -10,4 +10,5 @@ type CreateWordReq struct {
 	Content string `json:"content" v:"required|length:1,45" des:"Word content text" eg:"abandon"`
 }
 type CreateWordRes struct {
+	Id int64 `json:"id" des:"Created id" eg:"1"`
 }
