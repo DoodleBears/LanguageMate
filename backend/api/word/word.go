@@ -12,4 +12,5 @@ import (
 
 type IWordV1 interface {
 	CreateWord(ctx context.Context, req *v1.CreateWordReq) (res *v1.CreateWordRes, err error)
+	RetrieveWord(ctx context.Context, req *v1.RetrieveWordReq) (res *v1.RetrieveWordRes, err error)
 }
