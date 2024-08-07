@@ -5,6 +5,6 @@ import (
 )
 
 type IndexWordReq struct {
-	g.Meta `path:"/:id" tags:"Word" method:"get" sum:"Get a word"`
+	g.Meta `path:"/" tags:"Word" method:"get" sum:"Get a word"`
 }
 type IndexWordRes []*Word
