@@ -11,7 +11,7 @@ type Word struct {
 
 // parameters should use uppercase
 type RetrieveWordReq struct {
-	g.Meta `path:"/:id" tags:"Word" method:"get" sum:"Get a word"`
+	g.Meta `path:"/" tags:"Word" method:"get" sum:"Get a word"`
 }
 type RetrieveWordRes struct {
 	Content string `json:"content" des:"Word content text" eg:"abandon"`
