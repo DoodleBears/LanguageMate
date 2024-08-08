@@ -3,12 +3,20 @@ package sentence
 import (
 	"context"
 
-	"github.com/gogf/gf/v2/errors/gcode"
-	"github.com/gogf/gf/v2/errors/gerror"
+	v1 "backend/api/sentence/v1"
+	"backend/internal/dao"
 
-	"backend/api/sentence/v1"
+	"github.com/gogf/gf/v2/frame/g"
 )
 
 func (c *ControllerV1) DeleteSentence(ctx context.Context, req *v1.DeleteSentenceReq) (res *v1.DeleteSentenceRes, err error) {
-	return nil, gerror.NewCode(gcode.CodeNotImplemented)
+	r := g.RequestFromCtx(ctx)
+	uid := r.Session.MustGet("uid").String()
+	id := g.RequestFromCtx(ctx).GetRouter("id").Int()
+	// User can only delete owned
+	dao.Sentences.Ctx(ctx).Where(g.Map{
+		"user_uid": uid,
+		"id":       id,
+	}).Delete()
+	return
 }

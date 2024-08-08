@@ -6,6 +6,6 @@ import (
 
 // parameters should use uppercase
 type DeleteSentenceReq struct {
-	g.Meta `path:"/:word_id" tags:"Sentence" method:"delete" sum:"Delete a sentence"`
+	g.Meta `path:"/:id" tags:"Sentence" method:"delete" sum:"Delete a sentence"`
 }
 type DeleteSentenceRes struct{}
