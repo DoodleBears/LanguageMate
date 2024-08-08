@@ -12,4 +12,5 @@ import (
 
 type ISentenceV1 interface {
 	CreateSentence(ctx context.Context, req *v1.CreateSentenceReq) (res *v1.CreateSentenceRes, err error)
+	RetrieveSentence(ctx context.Context, req *v1.RetrieveSentenceReq) (res *v1.RetrieveSentenceRes, err error)
 }
