@@ -5,7 +5,8 @@ import (
 )
 
 type Sentence struct {
-	WordId  uint   `json:"word_id" v:"required" des:"Related word id" eg:"1"`
+	Id      uint   `json:"id" des:"Sentence id" eg:"1"`
+	WordId  uint   `json:"word_id" des:"Related word id" eg:"1"`
 	Content string `json:"content" des:"Word content text" eg:"We need to abandon the car."`
 }
 type SentenceList []*Sentence
