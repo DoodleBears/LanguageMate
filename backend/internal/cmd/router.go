@@ -41,7 +41,7 @@ var (
 						word.NewV1(),
 					)
 				})
-				group.Group("/sentence", func(group *ghttp.RouterGroup) {
+				group.Group("/sentences", func(group *ghttp.RouterGroup) {
 					group.Middleware(service.Middleware().Auth)
 					group.Bind(
 						sentence.NewV1(),
