@@ -3,12 +3,22 @@ package sentence
 import (
 	"context"
 
-	"github.com/gogf/gf/v2/errors/gcode"
-	"github.com/gogf/gf/v2/errors/gerror"
-
 	v1 "backend/api/sentence/v1"
+	"backend/internal/dao"
+	"backend/internal/model/entity"
+
+	"github.com/gogf/gf/v2/frame/g"
 )
 
 func (c *ControllerV1) CreateSentence(ctx context.Context, req *v1.CreateSentenceReq) (res *v1.CreateSentenceRes, err error) {
-	return nil, gerror.NewCode(gcode.CodeNotImplemented)
+	r := g.RequestFromCtx(ctx)
+	sentence := &entity.Sentences{}
+	sentence.Content = req.Content
+	sentence.UserUid = r.Session.MustGet("uid").String()
+	sentence.WordId = req.WordId
+	_, err = dao.Sentences.Ctx(ctx).Data(sentence).Save()
+	if err != nil {
+		return nil, err
+	}
+	return
 }
