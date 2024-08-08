@@ -11,10 +11,10 @@ type Sentence struct {
 type SentenceList []*Sentence
 
 // parameters should use uppercase
-type RetrieveSentenceReq struct {
+type IndexSentenceReq struct {
 	g.Meta `path:"/" tags:"Sentence" method:"post" sum:"Get sentences"`
 }
-type RetrieveSentenceRes struct {
+type IndexSentenceRes struct {
 	Words SentenceList `json:"sentences" des:"Sentence list"`
 	Page  int          `json:"page" des:"Current page number"`
 	Total int          `json:"total" des:"Total page number"`

@@ -9,6 +9,6 @@ import (
 	"backend/api/sentence/v1"
 )
 
-func (c *ControllerV1) RetrieveSentence(ctx context.Context, req *v1.RetrieveSentenceReq) (res *v1.RetrieveSentenceRes, err error) {
+func (c *ControllerV1) IndexSentence(ctx context.Context, req *v1.IndexSentenceReq) (res *v1.IndexSentenceRes, err error) {
 	return nil, gerror.NewCode(gcode.CodeNotImplemented)
 }
